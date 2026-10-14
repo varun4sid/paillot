@@ -1,0 +1,9 @@
+{
+    "cleanUrls": true,
+    "rewrites": [
+        {
+            "source": "/poll/:path*",
+            "destination": "/"
+        }
+    ]
+}
