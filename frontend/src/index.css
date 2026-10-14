@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.digits {
+  @apply font-mono break-all leading-snug;
+}
