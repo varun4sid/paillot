@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 const PORT = Number(process.env.PORT) || 5180;
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8001";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:5179";
 
 /** First non-internal IPv4 address (prefers Wi-Fi en0), so the QR code works from phones. */
 function lanIp() {
@@ -24,7 +24,7 @@ export default defineConfig({
     __LAN_ORIGIN__: JSON.stringify(`http://${lanIp()}:${PORT}`),
   },
   server: {
-    host: true, // listen on the LAN so classmates' phones can connect
+    host: true,
     port: PORT,
     strictPort: true,
     proxy: { "/api": BACKEND_URL },
