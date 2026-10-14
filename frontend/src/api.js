@@ -3,6 +3,8 @@
 const TOKEN_KEY = "auth_token";
 const USER_KEY = "auth_user";
 
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:5179";
+
 export function getToken() {
   try { return localStorage.getItem(TOKEN_KEY); } catch { return null; }
 }
@@ -20,7 +22,7 @@ export function clearAuth() {
   try {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
-  } catch { /* ignore */ }
+  } catch {}
 }
 
 export class ApiError extends Error {
@@ -40,7 +42,7 @@ export async function api(path, { method = "GET", body, auth = false } = {}) {
 
   let res;
   try {
-    res = await fetch(`/api${path}`, {
+    res = await fetch(`${BACKEND_URL}/api${path}`, {
       method,
       headers,
       body: body !== undefined ? JSON.stringify(body) : undefined,
